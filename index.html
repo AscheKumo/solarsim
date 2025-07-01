@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌌 Solar System Simulator</h1>
+            <div class="header-info">
+                <span class="info-item">Objects: <strong id="objectCount">0</strong></span>
+                <span class="info-item">FPS: <strong id="fps">0</strong></span>
+                <span class="info-item">Zoom: <strong id="zoomLevel">1.00x</strong></span>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="celestial-objects">
+                    <h3>Celestial Bodies</h3>
+                    <div class="objects-grid">
+                        <div class="object-card" data-type="planet-small" draggable="true">
+                            <div class="object-preview planet-small"></div>
+                            <div class="object-info">
+                                <span class="object-name">Rocky Planet</span>
+                                <span class="object-mass">Mass: 1</span>
+                            </div>
+                        </div>
+                        <div class="object-card" data-type="planet-medium" draggable="true">
+                            <div class="object-preview planet-medium"></div>
+                            <div class="object-info">
+                                <span class="object-name">Gas Giant</span>
+                                <span class="object-mass">Mass: 5</span>
+                            </div>
+                        </div>
+                        <div class="object-card" data-type="planet-large" draggable="true">
+                            <div class="object-preview planet-large"></div>
+                            <div class="object-info">
+                                <span class="object-name">Super Giant</span>
+                                <span class="object-mass">Mass: 10</span>
+                            </div>
+                        </div>
+                        <div class="object-card" data-type="star" draggable="true">
+                            <div class="object-preview star"></div>
+                            <div class="object-info">
+                                <span class="object-name">Star</span>
+                                <span class="object-mass">Mass: 1000</span>
+                            </div>
+                        </div>
+                        <div class="object-card" data-type="black-hole" draggable="true">
+                            <div class="object-preview black-hole"></div>
+                            <div class="object-info">
+                                <span class="object-name">Black Hole</span>
+                                <span class="object-mass">Mass: 5000</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="controls">
+                    <h3>Simulation Controls</h3>
+                    <div class="control-buttons">
+                        <button id="playPause" class="control-btn primary">
+                            <span class="icon">▶</span>
+                            <span class="label">Play</span>
+                        </button>
+                        <button id="reset" class="control-btn">
+                            <span class="icon">↻</span>
+                            <span class="label">Reset</span>
+                        </button>
+                        <button id="trails" class="control-btn">
+                            <span class="icon">✨</span>
+                            <span class="label">Trails</span>
+                        </button>
+                        <button id="centerView" class="control-btn">
+                            <span class="icon">⊙</span>
+                            <span class="label">Center</span>
+                        </button>
+                    </div>
+                    
+                    <div class="sliders">
+                        <div class="slider-group">
+                            <label>Speed <span id="speedValue">1.0x</span></label>
+                            <input type="range" id="speed" min="0" max="3" value="1" step="0.1">
+                        </div>
+                        <div class="slider-group">
+                            <label>Gravity <span id="gravityValue">1.0x</span></label>
+                            <input type="range" id="gravity" min="0" max="3" value="1" step="0.1">
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="presets">
+                    <h3>Preset Systems</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-preset="binary">Binary Star</button>
+                        <button class="preset-btn" data-preset="solar">Solar System</button>
+                        <button class="preset-btn" data-preset="chaos">Chaos</button>
+                    </div>
+                </section>
+                
+                <section class="help">
+                    <h3>How to Use</h3>
+                    <ul>
+                        <li><strong>Drag & Drop:</strong> Place objects on canvas</li>
+                        <li><strong>Click & Drag:</strong> Set initial velocity</li>
+                        <li><strong>Scroll:</strong> Zoom in/out</li>
+                        <li><strong>Right Click:</strong> Pan view</li>
+                    </ul>
+                </section>
+            </aside>
+            
+            <main class="canvas-container">
+                <canvas id="canvas"></canvas>
+                <div class="canvas-overlay">
+                    <div id="velocityIndicator" class="velocity-indicator hidden">
+                        <span class="velocity-value">0 px/s</span>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
